@@ -3,11 +3,20 @@ debug = true
 lto = "thin"
 panic = "abort"
 
+[profile.minsize]
+inherits = "release"
+opt-level = "z"       # Optimize for size
+lto = true            # Enable fat LTO for maximum cross-crate size optimization
+codegen-units = 1     # Compile in one unit (slower compile, better optimization/smaller size)
+strip = true          # Automatically strip symbols from the binary
+debug = false         # Disable debug info (saves a lot of space)
+panic = "abort"       # Abort on panic instead of unwinding
+
 [profile.bench]
 debug = true
 
 [workspace]
-members = ["jxl", "jxl_cli", "jxl_cms", "jxl_macros", "jxl_simd", "jxl_transforms"]
+members = ["jxl", "jxl_c_api", "jxl_cli", "jxl_cms", "jxl_macros", "jxl_simd", "jxl_transforms"]
 resolver = "2"
 
 [workspace.lints.clippy]

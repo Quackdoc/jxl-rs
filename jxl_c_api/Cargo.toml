@@ -1,0 +1,15 @@
+[package]
+name = "jxl_c_api"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[lib]
+crate-type = ["cdylib", "staticlib"]
+
+[dependencies]
+jxl = { path = "../jxl" }
+libc = "0.2"
+
+[lints]
+workspace = true
