@@ -8,8 +8,12 @@ publish = false
 crate-type = ["cdylib", "staticlib"]
 
 [dependencies]
-jxl = { path = "../jxl" }
+jxl = { path = "../jxl", default-features = false }
 libc = "0.2"
+
+[features]
+default = ["all-simd"]
+all-simd = ["jxl/all-simd"]
 
 [lints]
 workspace = true

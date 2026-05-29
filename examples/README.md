@@ -45,6 +45,15 @@ cd c/decode_stream
 gcc -O3 -o decode_stream decode_stream.c -I../../../jxl_c_api/include -L../../../target/release -ljxl_c_api -lm -lpthread -ldl
 ```
 
+to compile with musl:
+```sh
+cd c/decode_stream
+clang --target=x86_64-linux-musl -O3 -static -o decode_stream_static decode_stream.c \
+  -I../../../jxl_c_api/include \
+  -L../../../target/x86_64-unknown-linux-musl/release \
+  -ljxl_c_api -lm -lpthread
+```
+
 or simply run `make`
 
 To run it:
